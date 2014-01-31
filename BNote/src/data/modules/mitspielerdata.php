@@ -19,7 +19,7 @@ class MitspielerData extends AbstractData {
 				"email" => array("E-Mail", FieldType::EMAIL),
 				"address" => array("Adresse", FieldType::REFERENCE),
 				"instrument_name" => array("Instrument", FieldType::REFERENCE),
-				"status" => array("Status", FieldType::ENUM)
+				"status" => array("Status", FieldType::ENUM)	
 		);
 		
 		$this->init($dir_prefix);
@@ -31,7 +31,7 @@ class MitspielerData extends AbstractData {
 	 * @return Members of groups and phases the current user is part of.
 	 */
 	function getMembers($uid = -1) {
-		$fields = "CONCAT(c.name, ' ', c.surname) as fullname, phone, mobile, email, i.name as instrument";
+		$fields = "CONCAT(c.name, ' ', c.surname) as fullname, phone, mobile, email, i.name as instrument, c.name, c.surname, c.id";
 		$order = "ORDER BY fullname, instrument";
 		
 		if($this->getSysdata()->isUserSuperUser()) {
