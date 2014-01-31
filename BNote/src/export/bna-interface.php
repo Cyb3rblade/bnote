@@ -268,6 +268,17 @@ abstract class AbstractBNA implements iBNA {
 	function getContacts() {
 		$msd = new MitspielerData($GLOBALS["dir_prefix"]);
 		$contacts = $msd->getMembers($this->uid);
+
+		// TODO: do this right instead of this hack
+		for ($i = 0; $i < count($contacts); $i++)
+		{
+			$contact = $contacts[$i];
+			$id = $contact["id"];
+			$contact["id"] = "bnoteInstance/contact/" . $id;
+			$contact["type"] = "contact";
+		//	print_r($contact);
+			$contacts[$i] = $contact;
+		}
 		$this->printEntities($contacts, "contact");
 	}
 	
