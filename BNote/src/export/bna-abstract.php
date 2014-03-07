@@ -126,7 +126,7 @@ abstract class AbstractBNA implements iBNA {
 					exit();
 				}
 				$part = $_GET["participation"];
-				if($part > 1 || $part < -1) {
+				if($part > 2 || $part < -1) {
 					$part = -1;
 				}
 				$reason = "";
